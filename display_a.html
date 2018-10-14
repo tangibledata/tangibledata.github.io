@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/layout_common.css">
+	<link rel="stylesheet" type="text/css" href="css/type.css">
+	<link rel="stylesheet" type="text/css" href="css/color.css">
+	<link rel="stylesheet" type="text/css" href="css/components.css">
+	<link rel="stylesheet" type="text/css" href="css/img.css">
+</head>
+<body>
+	<div class="flex_row header">
+		<img src="img/un_logo.svg" id="un_logo">
+		<div class="flex_col">
+			<h2 class="uno_title"><span class="un_blue">UN</span> OFFICIAL HUMANISM</h2>
+			<p class="instruct margin_zero">for World Refugee Crisis</p>
+		</div>
+		<div class="sentence_containner flex_row">
+			
+		</div>
+	</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script>
+	var un_sentence;
+	var sub_sentence_list;
+	d3.json("data/un_sentences.json").then(function(data){
+		un_sentence = data;
+	});
+</script>
+<script type="text/javascript">
+	var un_channel = new BroadcastChannel('un');
+	var cross_channel = new BroadcastChannel('cross');
+
+	//메세지 수신 이벤트 리스너
+	un_channel.onmessage = function (ev) { 
+
+		/*기존 문장 제거*/
+		d3.select(".un_sentence").remove();
+		d3.selectAll(".un_subject").remove();
+
+		var message = ev.data;
+		var source;
+		var sub;
+		console.log(message);
+
+		//"subject source"형태로 메세지가 옴. 
+		//사용자 인풋이 UN인지 확인
+		if(message.includes("un")){
+			
+			//메세지에서 subject만 분리
+			sub = message.split(" ")[0];
+			console.log(sub);
+
+			//해당 subject가 포함된 모든 문장 리스트 저장
+			sub_sentence_list = un_sentence.filter(function(d){return d.subjects.includes(sub)});
+			console.log(sub_sentence_list);
+
+			//문장 리스트에서 랜돔으로 한문장 추출
+			var length = sub_sentence_list.length;
+			var index = parseInt(Math.random() * length);
+			console.log(index);
+			var sentence = sub_sentence_list[index].sentence;
+			var subjects = sub_sentence_list[index].subjects;
+			console.log(subjects);
+			
+			d3.select(".sentence_containner").append("h3")
+											 .attr("class","un_sentence")
+											 .html(sentence);
+
+			d3.select(".sentence_containner").selectAll("p")
+											 .data(subjects)
+											 .enter()
+											 .append("p")
+											 .attr("class","un_subject un_blue")
+											 .html(function(d){
+											 	return "#" + d;
+											 });
+
+			//Subject List, Twitter화면으로 전달
+			cross_channel.postMessage(subjects);
+		}
+
+	}
+</script>
+</html>

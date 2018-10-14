@@ -1,0 +1,15 @@
+body{
+	padding: 64px;
+}
+h2{
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+	margin: 32px 0;
+	color: #262626;
+	text-indent: -28px;
+}
+
+span.index{
+	color: #ff3344;
+}

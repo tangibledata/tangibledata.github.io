@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/layout_common.css">
+	<link rel="stylesheet" type="text/css" href="css/type.css">
+	<link rel="stylesheet" type="text/css" href="css/color.css">
+	<link rel="stylesheet" type="text/css" href="css/components.css">
+	<link rel="stylesheet" type="text/css" href="css/img.css">
+</head>
+<body>
+	<div class="live_area flex_col align_center">
+		<p class="instruct centered" style="margin-top: 20%; margin-bottom: 5%;">
+			Please choose a subject
+		</p>
+		<!--Navigator-->
+		<div class="flex_row col1">
+			<!--Tab-->
+			<div class="flex_col col2 flex_center tab selected" id="un_o">
+				<h3 class="uno_title"><span class="un_blue">UN</span> OFFICIAL</h3>
+			</div>
+			<div class="flex_col col2 flex_center tab" id="uno">
+				<h3 class="un_o_title"><span class="un_red">UN</span>OFFICIAL</h3>
+			</div>
+			<!--category-->
+			<div class="col1" id="category_containner">
+				<div class="flex_row col1 padding_ver category_list" id="un_o_category_list">
+				</div>
+				<div class="flex_row col1 padding_ver category_list" id="uno_category_list">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script>
+	var un_channel = new BroadcastChannel('un');
+	var twitter_channel = new BroadcastChannel('twitter');
+</script>
+<script>
+	//UN문서 카테고리 로드
+	d3.json("data/un_category.json").then(function(data){
+		console.log(data);
+		var category_list =  d3.select("#un_o_category_list").selectAll("div")
+									 .data(data)
+									 .enter()
+									 .append("div")
+									 .attr("class","category_item flex_col col4");
+
+		//Add Chapter Number
+		category_list.append("p")
+					 .attr("class", "margin_zero un_o_chapter un_blue")
+					 .style("font-family","'Roboto', sans-serif")
+					 .html(function(d, i){
+					 	return "Chapter" + (i+1);
+					 });
+
+		category_list.append("h3")
+		 			 .attr("class", "un_o_category margin_zero")
+					 .html(function(d){
+					 	return d.title;
+					 });
+
+		
+		/*카테고리 클릭 이벤트*/
+		category_list.on("click",function(d,i){
+
+			/*Subcategory popup*/
+			var sub_category = d3.select("#un_o_category_list")
+								 .append("div")
+								 .attr("class","subcat_popup col flex_row");
+
+
+
+			var sub_category_list = sub_category.selectAll("div")
+											    .data(d.subjects)
+											    .enter()
+											    .append("div")
+											    .attr("class","category_item flex_col col4");
+
+			sub_category_list.append("p")
+					 .attr("class", "margin_zero un_o_chapter un_blue")
+					 .style("font-family","'Roboto', sans-serif")
+					 .html(function(d, i){
+					 	return "Subject" + (i+1);
+					 });
+			
+
+			sub_category_list.append("h3")
+				 			 .attr("class", "un_o_category margin_zero")
+							 .html(function(d){
+							 	return d;
+							 });
+
+			/*Exit Button*/
+			var exit = sub_category.append("div")
+										.attr("class","category_item flex_row exit align_center");
+
+			exit.append("img")										
+				.attr("src","img/ic_back.svg");
+
+			exit.append("p")
+				.attr("class","instruct")
+				.html("Back to main");
+
+			exit.on("click",function(){
+				d3.select(".subcat_popup").remove();
+			});
+
+			/*Sub Category List Even*/
+			sub_category_list.on("click",function(d){
+				/*디스플레이로 메세지 전송*/
+				console.log(d);
+				var message = d + " un";
+				un_channel.postMessage(message);
+			});
+		});
+	});
+
+	//트위터 카테고리 로드
+	d3.json("data/twitter_category.json").then(function(data){
+		console.log(data);
+		var category_list =  d3.select("#uno_category_list").selectAll("div")
+									 .data(data)
+									 .enter()
+									 .append("div")
+									 .attr("class","category_item flex_col col4");
+
+		//Add Chapter Number
+		category_list.append("p")
+					 .attr("class", "margin_zero uno_chapter un_red")
+					 .html(function(d, i){
+					 	return "Chapter" + (i+1);
+					 });
+
+		category_list.append("h3")
+		 			 .attr("class", "uno_category margin_zero")
+					 .html(function(d){
+					 	return d.title;
+					 });
+
+		/*카테고리 클릭 이벤트*/
+		category_list.on("click",function(d,i){
+			/*디스플레이로 메세지 전송*/
+			console.log(d.title + i);
+			bc.postMessage(d.title);
+			bc.postMessage(i);
+
+			/*Subcategory popup*/
+			var sub_category = d3.select("#uno_category_list")
+								 .append("div")
+								 .attr("class","subcat_popup col flex_row");
+
+
+
+			var sub_category_list = sub_category.selectAll("div")
+											    .data(d.subjects)
+											    .enter()
+											    .append("div")
+											    .attr("class","category_item flex_col col4");
+
+			sub_category_list.append("p")
+					 .attr("class", "margin_zero uno_chapter un_red")
+					 .html(function(d, i){
+					 	return "Subject" + (i+1);
+					 });
+			
+
+			sub_category_list.append("h3")
+				 			 .attr("class", "uno_category margin_zero")
+							 .html(function(d){
+							 	return d;
+							 });
+
+			/*Exit Button*/
+			var exit = sub_category.append("div")
+										.attr("class","category_item flex_row exit align_center");
+
+			exit.append("img")										
+				.attr("src","img/ic_back.svg");
+
+			exit.append("p")
+				.attr("class","instruct")
+				.html("Back to main");
+
+			exit.on("click",function(){
+				d3.select(".subcat_popup").remove();
+			});
+		});
+
+
+	});
+</script>
+<script>
+	$(document).ready(function(){
+		/*초기화*/
+		$("#uno_category_list").css("display","none");
+
+		/*탭 스위치*/
+		$(".tab").on("click",function(){
+			$(this).addClass("selected");
+			$(".tab").not(this).removeClass("selected");
+
+			if($(this).attr('id')=="un_o"){
+				$("#un_o_category_list").css("display","flex");
+				$("#uno_category_list").css("display","none");
+			}
+			else{
+				$("#un_o_category_list").css("display","none");
+				$("#uno_category_list").css("display","flex");
+			}
+
+		});
+
+	});
+</script>
+</html>
