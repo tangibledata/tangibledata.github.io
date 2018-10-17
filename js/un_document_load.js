@@ -46,7 +46,7 @@ d3.json("data/un_category.json").then(function(data){
 				 });
 		
 
-		sub_category_list.append("h3")
+		sub_category_list.appe팅d("h3")
 			 			 .attr("class", "un_o_category margin_zero")
 						 .html(function(d){
 						 	return d;
