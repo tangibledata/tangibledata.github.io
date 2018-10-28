@@ -19,15 +19,15 @@
 			console.log(sub);
 
 			//해당 subject가 포함된 모든 문장 리스트 저장
-			sub_sentence_list = twitter_sentences.filter(function(d){return d.subjects.includes(sub)});
+			sub_sentence_list = twitter_sentences.filter(function(d){return d.subject.includes(sub)});
 			console.log(sub_sentence_list);
 
 			//문장 리스트에서 랜돔으로 한문장 추출
 			var length = sub_sentence_list.length;
 			var index = parseInt(Math.random() * length);
 			console.log(index);
-			var sentence = sub_sentence_list[index].sentence;
-			var subjects = sub_sentence_list[index].subjects;
+			var sentence = sub_sentence_list[index].clean_text;
+			var subjects = sub_sentence_list[index].token;
 			console.log(subjects);
 			
 			d3.select(".sentence_containner").append("h3")

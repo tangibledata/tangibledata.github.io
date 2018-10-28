@@ -42,26 +42,25 @@
 <script src="js/un_document_load.js"></script>
 <script src="js/twitter_load.js"></script>
 <script>
-	$(document).ready(function(){
-		/*초기화*/
-		$("#uno_category_list").css("display","none");
+$(document).ready(function(){
+	/*초기화*/
+	$("#uno_category_list").css("display","none");
 
-		/*탭 스위치*/
-		$(".tab").on("click",function(){
-			$(this).addClass("selected");
-			$(".tab").not(this).removeClass("selected");
+	/*탭 스위치*/
+	$(".tab").on("click",function(){
+		$(this).addClass("selected");
+		$(".tab").not(this).removeClass("selected");
 
-			if($(this).attr('id')=="un_o"){
-				$("#un_o_category_list").css("display","flex");
-				$("#uno_category_list").css("display","none");
-			}
-			else{
-				$("#un_o_category_list").css("display","none");
-				$("#uno_category_list").css("display","flex");
-			}
-
-		});
+		if($(this).attr('id')=="un_o"){
+			$("#un_o_category_list").css("display","flex");
+			$("#uno_category_list").css("display","none");
+		}
+		else{
+			$("#un_o_category_list").css("display","none");
+			$("#uno_category_list").css("display","flex");
+		}
 
 	});
+});
 </script>
 </html>
