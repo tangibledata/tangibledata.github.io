@@ -10,7 +10,7 @@ body{
 	background-color: #000000;
 }
 .live_area{
-	padding:96px;
+	padding:48px;
 	width: calc(100% - 192px);
 	height: calc(100% - 192px);
 }

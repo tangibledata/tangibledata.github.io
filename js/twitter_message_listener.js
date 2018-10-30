@@ -27,7 +27,7 @@
 			var index = parseInt(Math.random() * length);
 			console.log(index);
 			var sentence = sub_sentence_list[index].clean_text;
-			var subjects = sub_sentence_list[index].token;
+			var subjects = sub_sentence_list[index].subject;
 			console.log(subjects);
 			
 			d3.select(".sentence_containner").append("h3")

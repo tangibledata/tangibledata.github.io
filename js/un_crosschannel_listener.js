@@ -6,25 +6,25 @@
 		d3.select(".un_sentence").remove();
 		d3.selectAll(".un_subject").remove();
 
-		var selected_subjects = ev.data;
-		console.log(selected_subjects);
+		var selected_subject = ev.data;
+		console.log(selected_subject);
 
 		//subject가 겹치는 문장 추려내기
-		var max_score = selected_subjects.length;
+		var max_score = selected_subject.length;
 		var related_sentences = [];
 		var highest_score = 0;
 		var score = 0;
 
 		un_sentences.forEach(function(d){
-			var subjects = d.subjects;
-			var score = compare(selected_subjects,subjects);
+			var subject = d.subject;
+			var score = compare(selected_subject,subject);
 			if(0<score){
 				if(highest_score<score){
 					highest_score = score;
 				}
 				related_sentences.push({
-					"sentence": d.sentence,
-					"subjects": d.subjects,
+					"sentence": d.clean_text,
+					"subject": d.subject,
 					"score": score
 				});
 				console.log("highest score: " + highest_score);
@@ -45,14 +45,14 @@
 		var length = highest_score_sentences.length;
 		var index = parseInt(Math.random() * length);
 		var final_sentence = highest_score_sentences[index].sentence;
-		var final_sentence_subjects = highest_score_sentences[index].subjects;
+		var final_sentence_subject = highest_score_sentences[index].subject;
 
 		d3.select(".sentence_containner").append("h3")
 										 .attr("class","un_sentence")
 										 .html(final_sentence);
 
 		d3.select(".sentence_containner").selectAll("p")
-										 .data(final_sentence_subjects)
+										 .data(final_sentence_subject)
 										 .enter()
 										 .append("p")
 										 .attr("class","un_subject un_blue")

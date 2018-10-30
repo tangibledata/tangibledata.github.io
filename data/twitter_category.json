@@ -1,30 +1,37 @@
 [
 	{
-		"title": "topic1",
-		"subjects": ["asylum", "right", "seeking", "legal", "immigration", "persecution", "unite"]
+		"topic_index": 0,
+		"topic_title": "Right",
+		"subjects": ["asylum", "right", "seeking", "legal", "immigration", "persecution"]
 	},
 	{
-		"title": "topic2",
-		"subjects": ["sub3","sub4","sub5","sub6","sub7","sub8"]
+		"topic_index": 2,
+		"topic_title": "Children",
+		"subjects": ["better", "child", "thank", "education", "opportunity", "future", "connect"]
 	},
 	{
-		"title": "topic3",
-		"subjects": ["sub4","sub5","sub6","sub7","sub8","sub9"]
+		"topic_index": 3,
+		"topic_title": "Family Value",
+		"subjects": ["family", "story", "woman", "jesus", "support", "place", "resettlement"]
 	},
 	{
-		"title": "topic4",
-		"subjects": ["sub5","sub6","sub7","sub8","sub9","sub10"]
+		"topic_index": 4,
+		"topic_title": "Local Conflict",
+		"subjects": ["korea", "deny", "yemeni", "benefit", "watch", "status"]
 	},
 	{
-		"title": "topic5",
-		"subjects": ["sub8","sub9","sub10","sub1","sub2","sub3"]
+		"topic_index": 6,
+		"topic_title": "Education",
+		"subjects": ["school", "student", "center", "class", "city"]
 	},
 	{
-		"title": "topic5",
-		"subjects": ["sub7","sub8","sub9","sub10","sub1","sub2"]
+		"topic_index": 8,
+		"topic_title": "Stereotype",
+		"subjects": ["syrian", "syria", "life", "camp", "rohingya", "muslim", "bangladesh", "force"]
 	},
 	{
-		"title": "topic6",
-		"subjects": ["sub4","sub5","sub6","sub7","sub8","sub9"]
+		"topic_index": 9,
+		"topic_title": "Policy",
+		"subjects": ["world", "living", "government", "anti", "resettle", "politics"]
 	}
 ]

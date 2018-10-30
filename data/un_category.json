@@ -1,30 +1,37 @@
 [
-	{
-		"title": "Responsibility",
-		"subjects": ["sub1","sub2","sub3","sub4","sub5","sub6"]
+	{	
+		"topic_index":0,
+		"topic_title": "Asylum Process",
+		"subjects": ["asylum", "decision", "claim", "seeker", "authority", "appeal", "application"]
 	},
 	{
-		"title": "Determining",
-		"subjects": ["sub3","sub4","sub5","sub6","sub7","sub8"]
+		"topic_index":1,
+		"topic_title": "Right",
+		"subjects": ["right", "human", "international", "refoulement", "convention", "obligation", "respect"]
 	},
 	{
-		"title": "Right & Dignity",
-		"subjects": ["Children","Supporting","Right of Stay","sub4","sub5","sub6"]
+		"topic_index":2,
+		"topic_title": "Role of Protection",
+		"subjects": ["legislation", "declaration", "regional", "national", "protocol", "protection", "union"]
 	},
 	{
-		"title": "Managing",
-		"subjects": ["sub5","sub6","sub7","sub8","sub9","sub10"]
+		"topic_index":4,
+		"topic_title": "Managing",
+		"subjects": ["support", "provide", "humanitarian", "community", "resettlement", "solution"]
 	},
 	{
-		"title": "Fair & Efficiency",
-		"subjects": ["sub8","sub9","sub10","sub1","sub2","sub3"]
+		"topic_index":6,
+		"topic_title": "Family",
+		"subjects": ["child", "family", "education", "woman", "girl", "school", "adult"]
 	},
 	{
-		"title": "Social Impact",
-		"subjects": ["sub7","sub8","sub9","sub10","sub1","sub2"]
+		"topic_index":7,
+		"topic_title": "Woman",
+		"subjects": ["gender", "protection", "violence", "sexual", "woman"]
 	},
 	{
-		"title": "Category",
-		"subjects": ["sub4","sub5","sub6","sub7","sub8","sub9"]
+		"topic_index":9,
+		"topic_title": "Category",
+		"subjects": ["detention", "facility", "alternative", "removal", "public", "detain"]
 	}
 ]

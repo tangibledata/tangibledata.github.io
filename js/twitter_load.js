@@ -17,7 +17,7 @@ d3.json("data/twitter_category.json").then(function(data){
 	category_list.append("h3")
 	 			 .attr("class", "uno_category margin_zero")
 				 .html(function(d){
-				 	return d.title;
+				 	return d.topic_title;
 				 });
 
 	/*카테고리 클릭 이벤트*/

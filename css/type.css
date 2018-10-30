@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,400,500');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Passion+One:400,700');
 
 
 /*
@@ -52,7 +53,7 @@ h2.uno_title{
 	margin:0;
 }
 h2.un_o_title{
-	font-family: Kalam-Bold;
+	font-family: 'Passion One', cursive;
 	font-size: 48px;
 	line-height: 48px;
 	line-height: 64px;
@@ -67,7 +68,7 @@ h3.uno_title{
 	line-height: 48px;
 }
 h3.un_o_title{
-	font-family: Kalam-Bold;
+	font-family: 'Passion One', cursive;
 	font-size: 36px;
 	line-height: 48px;
 }
@@ -75,26 +76,27 @@ h3.un_o_title{
 /*Category*/
 p.un_o_chapter{
 	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	font-size: 18px;
-	line-height: 24px;
+	font-weight: 500;
+	font-size: 36px;
+	line-height: 36px;
 }
 h3.un_o_category{
 	font-family: 'Roboto', sans-serif;
-	font-weight: 400;
-	font-size: 36px;
-	line-height: 48px;
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 64px;
 	letter-spacing: 0.8px;
 }
 p.uno_chapter{
-	font-family: Kalam-Regular;
-	font-size: 18px;
+	font-family: 'Passion One', cursive;
+	font-size: 48px;
+	font-weight: 700;
 	line-height: 24px;
 }
 h3.uno_category{
-	font-family: Kalam-Bold;
-	font-size: 36px;
-	line-height: 48px;
+	font-family: 'Passion One', cursive;
+	font-size: 64px;
+	line-height: 64px;
 	letter-spacing: 0.8px;
 }
 
@@ -102,14 +104,14 @@ h3.uno_category{
 h3.un_sentence{
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
-	font-size: 36px;
-	line-height: 48px;
+	font-size: 64px;
+	line-height: 64px;
 	letter-spacing: 0.8px;
 }
 h3.uno_sentence{
-	font-family: Kalam-Regular;
-	font-size: 36px;
-	line-height: 48px;
+	font-family:'Passion One', cursive;
+	font-size: 64px;
+	line-height: 64px;
 	letter-spacing: 0.8px;
 }
 
@@ -117,15 +119,15 @@ h3.uno_sentence{
 p.un_subject{
 	font-family: 'Roboto', sans-serif;
 	font-weight: 400;
-	font-size: 36px;
+	font-size: 48px;
 	line-height: 48px;
 	letter-spacing: 0.8px;
 	margin-right: 32px;
 }
 p.uno_subject{
-	font-family: Kalam-Regular;
+	font-family: 'Passion One', cursive;
 	font-weight: 400;
-	font-size: 36px;
+	font-size: 48px;
 	line-height: 48px;
 	letter-spacing: 0.8px;
 	margin-right: 32px;

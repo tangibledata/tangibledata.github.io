@@ -5,7 +5,7 @@ d3.json("data/un_category.json").then(function(data){
 								 .data(data)
 								 .enter()
 								 .append("div")
-								 .attr("class","category_item flex_col col4");
+								 .attr("class","category_item flex_col");
 
 	//Add Chapter Number
 	category_list.append("p")
@@ -18,7 +18,7 @@ d3.json("data/un_category.json").then(function(data){
 	category_list.append("h3")
 	 			 .attr("class", "un_o_category margin_zero")
 				 .html(function(d){
-				 	return d.title;
+				 	return d.topic_title;
 				 });
 
 	
@@ -36,7 +36,7 @@ d3.json("data/un_category.json").then(function(data){
 										    .data(d.subjects)
 										    .enter()
 										    .append("div")
-										    .attr("class","category_item flex_col col4");
+										    .attr("class","category_item flex_col");
 
 		sub_category_list.append("p")
 				 .attr("class", "margin_zero un_o_chapter un_blue")
