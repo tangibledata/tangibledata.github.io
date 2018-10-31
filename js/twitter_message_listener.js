@@ -40,6 +40,12 @@
 			var sentence = sub_sentence_list[index].clean_text;
 			var subjects = sub_sentence_list[index].subject;
 			var media = sub_sentence_list[index].media;
+			var topic_num = sub_sentence_list[index].topic;
+			var input_value = {
+				"subject": subjects,
+				"topic_num": topic_num
+
+			}
 			console.log(subjects);
 			
 			d3.select(".sentence_containner").append("h3")
@@ -57,9 +63,7 @@
 
 			d3.select("body").style("background-image","url(" + media + ")");
 
-			twitter_start_type(subjects);
-
-			
+			twitter_start_type(input_value);		
 
 		}
 	}
@@ -74,7 +78,7 @@
 		  }
 		}
 
-	function twitter_start_type(subjects) {
+	function twitter_start_type(input_value) {
 		  var text = $('.uno_sentence').data('text');
 		  var n = text.length;
 		  var end_time = 10 * n;
@@ -83,7 +87,7 @@
 		  twitter_typeWriter(text, 0);
 		 
 		  setTimeout(function() {
-		  	console.log("send " + subjects + " to Cross Channel")
-		      cross_channel.postMessage(subjects);
+		  	console.log("send " + input_value + " to Cross Channel")
+		      cross_channel.postMessage(input_value);
 		    }, end_time);
 		}

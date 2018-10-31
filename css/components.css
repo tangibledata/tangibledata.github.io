@@ -29,7 +29,7 @@
 
 }
 .subcat_popup{
-	width: calc(100% - 192px);
+	width: calc(100% - 96px);
 	position:absolute;
 	background-color: #000000;
 	padding-bottom: 32px;
