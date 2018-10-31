@@ -11,5 +11,7 @@ all_channel.onmessage = function (ev) {
 
 		d3.select("#earth").transition()
 						   .style("opacity",1);
+
+		d3.select("body").style("background-image","none");
 	}
 }
