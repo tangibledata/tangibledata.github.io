@@ -2,7 +2,7 @@
 	{	
 		"topic_index":0,
 		"topic_title": "Asylum Process",
-		"subjects": ["asylum", "decision", "claim", "seeker", "authority", "appeal", "application"]
+		"subjects": ["asylum", "decision", "claim", "seeking", "authority", "appeal", "application"]
 	},
 	{
 		"topic_index":1,
