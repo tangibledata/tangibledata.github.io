@@ -69,6 +69,23 @@ d3.json("data/twitter_category.json").then(function(data){
 			console.log(d);
 			var message = d + " twitter";
 			twitter_channel.postMessage(message);
+
+		   d3.select("body").append("div")
+							 .attr("class","subject_popup un_red")
+							 .html(d);
+
+		   d3.select(".subject_popup")
+		   	 .append("img")
+		   	 .attr("src","img/ic_close.svg")
+		   	 .attr("class","close")
+		   	 .style("width","64px")
+		   	 .style("height","64px");
+
+		    d3.select(".close").on("click",function(){
+		   		all_channel.postMessage("remove");
+		   		d3.select(".subject_popup").remove();
+		   });
+
 		});
 	});
 
