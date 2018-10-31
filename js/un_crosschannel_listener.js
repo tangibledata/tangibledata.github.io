@@ -39,7 +39,7 @@
 					highest_score = score;
 				}
 				related_sentences.push({
-					"sentence": d.clean_text,
+					"selected_text": d.selected_text,
 					"subject": d.subject,
 					"score": score
 				});
@@ -52,6 +52,8 @@
 		//score가 가장 높은 문장 리스트
 
 		if(highest_score==0){
+			console.log("no subject matched!");
+			console.log(topic_num);
 			var topic_num2;
 			
 			if(topic_num==0){
@@ -72,7 +74,7 @@
 				topic_num2 = 4;
 			}
 			/*토픽으로 크게 문장 추출*/
-			var highest_score_sentences = related_sentences.filter(function(d){
+			var highest_score_sentences = un_sentences.filter(function(d){
 				console.log((d.topic == topic_num2));
 				return d.topic == topic_num2;
 			});
@@ -90,7 +92,7 @@
 		console.log(highest_score_sentences);
 		var length = highest_score_sentences.length;
 		var index = parseInt(Math.random() * length);
-		var final_sentence = highest_score_sentences[index].sentence;
+		var final_sentence = highest_score_sentences[index].selected_text;
 		var final_sentence_subject = highest_score_sentences[index].subject;
 		d3.select(".sentence_containner").append("h3")
 											 .attr("class","un_sentence")

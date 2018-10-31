@@ -36,7 +36,7 @@
 					highest_score++;
 				}
 				related_sentences.push({
-					"sentence": d.clean_text,
+					"clean_text": d.clean_text,
 					"subject": d.subject,
 					"score": score,
 					"media": d.media
@@ -68,7 +68,7 @@
 				topic_num2 = 8;
 			}
 			/*토픽으로 크게 문장 추출*/
-			var highest_score_sentences = related_sentences.filter(function(d){
+			var highest_score_sentences = twitter_sentences.filter(function(d){
 				console.log((d.topic == topic_num2));
 				return d.topic == topic_num2;
 			});
@@ -85,7 +85,7 @@
 		//최종 리스트에서 1개 랜돔으로 뽑기
 		var length = highest_score_sentences.length;
 		var index = parseInt(Math.random() * length);
-		var final_sentence = highest_score_sentences[index].sentence;
+		var final_sentence = highest_score_sentences[index].clean_text;
 		var final_sentence_subject = highest_score_sentences[index].subject;
 		var media = highest_score_sentences[index].media;
 
