@@ -73,6 +73,8 @@ d3.json("data/un_category.json").then(function(data){
 			console.log(d);
 			var message = d + " un";
 			un_channel.postMessage(message);
+
+			
 		});
 	});
 });

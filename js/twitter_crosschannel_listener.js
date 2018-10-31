@@ -1,6 +1,6 @@
-//크로스 채널 이벤트 리스너
+	//크로스 채널 이벤트 리스너
 	cross_channel.onmessage = function (ev) { 
-
+		console.log(ev);
 		/*기존 문장 제거*/
 		d3.select(".uno_sentence").remove();
 		d3.selectAll(".uno_subject").remove();
@@ -8,6 +8,19 @@
 		var selected_subject = ev.data;
 		console.log(selected_subject);
 
+		d3.select("#earth").transition()
+						   .style("opacity",0)
+						   .delay(800)
+						   .on("end",function(d){
+						   	d3.select(this).style("display","none");
+						   })
+						   .on("end",function(){
+						   		write_sentence_cross(selected_subject);
+						   });
+	}
+
+	/*문장쓰기*/
+	function write_sentence_cross(selected_subject){
 		//subject가 겹치는 문장 추려내기
 		var max_score = selected_subject.length;
 		var related_sentences = [];
@@ -23,7 +36,8 @@
 				related_sentences.push({
 					"sentence": d.clean_text,
 					"subject": d.subject,
-					"score": score
+					"score": score,
+					"media": d.media
 				});
 				console.log("Score of current sentence: " + score);
 			}
@@ -43,11 +57,12 @@
 		var index = parseInt(Math.random() * length);
 		var final_sentence = highest_score_sentences[index].sentence;
 		var final_sentence_subject = highest_score_sentences[index].subject;
+		var media = highest_score_sentences[index].media;
 
-		console.log(final_sentence);
+		console.log(highest_score_sentences[index]);
 		d3.select(".sentence_containner").append("h3")
 										 .attr("class","uno_sentence")
-										 .html(final_sentence);
+										 .attr("data-text",final_sentence);
 
 		d3.select(".sentence_containner").selectAll("p")
 										 .data(final_sentence_subject)
@@ -57,8 +72,12 @@
 										 .html(function(d){
 										 	return "#" + d;
 										 });
+
+		d3.select("body").style("background-image","url(" + media + ")");
+		cross_start_type();
 	}
 
+	/*서브젝트 비교*/
 	function compare(arr1,arr2){
 		const finalarray = [];
 		arr1.forEach((e1)=>arr2.forEach((e2)=>
@@ -69,3 +88,20 @@
 					));
 		return finalarray.length;
 	}
+
+	function cross_typeWriter(text, n) {
+		  if (n < (text.length)) {
+		    $('.uno_sentence').html(text.substring(0, n+1));
+		    n++;
+		    setTimeout(function() {
+		      cross_typeWriter(text, n)
+		    }, 10);
+		  }
+		}
+
+	function cross_start_type() {
+		  var text = $('.uno_sentence').data('text');
+		   console.log(text);
+		  
+		  cross_typeWriter(text, 0);
+		}

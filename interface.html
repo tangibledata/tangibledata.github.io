@@ -10,9 +10,6 @@
 </head>
 <body>
 	<div class="live_area flex_col align_center">
-		<p class="instruct centered" style="margin-top: 96px; margin-bottom: 5%;">
-			Please choose a subject
-		</p>
 		<!--Navigator-->
 		<div class="flex_row col1">
 			<!--Tab-->
@@ -23,7 +20,7 @@
 				<h3 class="un_o_title"><span class="un_red">UN</span>OFFICIAL</h3>
 			</div>
 			<!--category-->
-			<div class="col1" id="category_containner">
+			<div class="col1 category_containner">
 				<div class="flex_row col1 padding_ver category_list" id="un_o_category_list">
 				</div>
 				<div class="flex_row col1 padding_ver category_list" id="uno_category_list">
@@ -32,6 +29,7 @@
 		</div>
 	</div>
 </body>
+<script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script>
@@ -59,7 +57,6 @@ $(document).ready(function(){
 			$("#un_o_category_list").css("display","none");
 			$("#uno_category_list").css("display","flex");
 		}
-
 	});
 });
 </script>

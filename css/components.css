@@ -1,9 +1,8 @@
 /*Header*/
 .header{
-	padding:96px;
-	width: calc(100% - 192px);
+	padding:48px;
+	width: calc(100% - 96px);
 }
-
 
 /*tab*/
 .tab{
@@ -37,9 +36,10 @@
 }
 .category_item{
 	cursor: pointer;
-	width: 20%;
+	min-width: 20%;
+	width: auto;
 	padding-left: 5%;
-	margin: 32px 0;
+	margin: 5% 0;
 }
 
 /*Navigation*/

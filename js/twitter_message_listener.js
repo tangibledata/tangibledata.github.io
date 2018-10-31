@@ -10,6 +10,17 @@
 		var sub;
 		console.log(message);
 
+		d3.select("#earth").transition()
+						   .style("opacity",0)
+						   .on("end",function(d){
+						   	d3.select("#earth").style("display","none");
+						   })
+						   .on("end",function(){
+								write_sentence_twitter(message);						
+						   });
+	}
+
+	function write_sentence_twitter(message){
 		//"subject source"형태로 메세지가 옴. 
 		//사용자 인풋이 twitter인지 확인
 		if(message.includes("twitter")){
@@ -28,11 +39,12 @@
 			console.log(index);
 			var sentence = sub_sentence_list[index].clean_text;
 			var subjects = sub_sentence_list[index].subject;
+			var media = sub_sentence_list[index].media;
 			console.log(subjects);
 			
 			d3.select(".sentence_containner").append("h3")
 											 .attr("class","uno_sentence")
-											 .html(sentence);
+											 .attr("data-text",sentence);
 
 			d3.select(".sentence_containner").selectAll("p")
 											 .data(subjects)
@@ -43,8 +55,35 @@
 											 	return "#" + d;
 											 });
 
-			//Subject List, UN화면으로 전달
-			cross_channel.postMessage(subjects);
+			d3.select("body").style("background-image","url(" + media + ")");
+
+			twitter_start_type(subjects);
+
+			
+
+		}
+	}
+
+	function twitter_typeWriter(text, n) {
+		  if (n < (text.length)) {
+		    $('.uno_sentence').html(text.substring(0, n+1));
+		    n++;
+		    setTimeout(function() {
+		      twitter_typeWriter(text, n)
+		    }, 10);
+		  }
 		}
 
-	}
+	function twitter_start_type(subjects) {
+		  var text = $('.uno_sentence').data('text');
+		  var n = text.length;
+		  var end_time = 10 * n;
+		  console.log(end_time);
+		  console.log(text);
+		  twitter_typeWriter(text, 0);
+		 
+		  setTimeout(function() {
+		  	console.log("send " + subjects + " to Cross Channel")
+		      cross_channel.postMessage(subjects);
+		    }, end_time);
+		}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="transform: scaleX(-1);">
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="css/layout_common.css">
@@ -9,14 +9,15 @@
 	<link rel="stylesheet" type="text/css" href="css/img.css">
 </head>
 <body>
-	<div class="flex_row header">
+	<iframe id="earth" src="earth.html">	
+	</iframe>
+	<div class="bg_filter"></div>
+	<div class="flex_row header align_center">
 		<img src="img/un_logo2.svg" id="un_logo">
 		<div class="flex_col">
 			<h2 class="un_o_title"><span class="un_red">UN</span>OFFICIAL HUMANISM</h2>
-			<p class="instruct margin_zero">for World Refugee Crisis</p>
 		</div>
 		<div class="sentence_containner flex_row">
-			
 		</div>
 	</div>
 </body>
@@ -25,7 +26,7 @@
 <script>
 	var twitter_sentences;
 	var sub_sentence_list
-	d3.json("data/twitter_topic_subject.json").then(function(data){
+	d3.json("data/topic_subject_with_image.json").then(function(data){
 		twitter_sentences = data;
 	});
 

@@ -9,6 +9,20 @@
 		var selected_subject = ev.data;
 		console.log(selected_subject);
 
+		d3.select("#earth").transition()
+						   .style("opacity",0)
+						   .delay(800)
+						   .on("end",function(d){
+						   	d3.select(this).style("display","none");
+						   })
+						   .on("end",function(){
+						   		write_sentence_cross(selected_subject);
+						   });
+
+	}
+
+	/*문장쓰기 함수*/
+	function write_sentence_cross(selected_subject){
 		//subject가 겹치는 문장 추려내기
 		var max_score = selected_subject.length;
 		var related_sentences = [];
@@ -49,7 +63,7 @@
 
 		d3.select(".sentence_containner").append("h3")
 										 .attr("class","un_sentence")
-										 .html(final_sentence);
+										 .attr("data-text",final_sentence);
 
 		d3.select(".sentence_containner").selectAll("p")
 										 .data(final_sentence_subject)
@@ -59,6 +73,8 @@
 										 .html(function(d){
 										 	return "#" + d;
 										 });
+
+		start_type();
 	}
 
 	function compare(arr1,arr2){
@@ -71,3 +87,20 @@
 					));
 		return finalarray.length;
 	}
+
+	function typeWriter(text, n) {
+		  if (n < (text.length)) {
+		    $('.un_sentence').html(text.substring(0, n+1));
+		    n++;
+		    setTimeout(function() {
+		      typeWriter(text, n)
+		    }, 10);
+		  }
+		}
+
+	function start_type() {
+		  var text = $('.un_sentence').data('text');
+		   console.log(text);
+		  
+		  typeWriter(text, 0);
+		}

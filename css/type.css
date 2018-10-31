@@ -48,16 +48,19 @@ p.instruct{
 h2.uno_title{
 	font-family: 'Roboto', sans-serif;
 	font-weight: 700;
-	font-size: 48px;
+	font-size: 80px;
 	line-height: 64px;
 	margin:0;
+	font-weight: 900;
+	text-shadow: 2px 2px 4px #000000a0;
 }
 h2.un_o_title{
 	font-family: 'Passion One', cursive;
-	font-size: 48px;
-	line-height: 48px;
+	font-size: 64px;
 	line-height: 64px;
-	 margin:0;
+	font-weight: 700;
+	margin:0;
+	text-shadow: 2px 2px 4px #000000a0;
 }
 
 /*Tab*/
@@ -69,9 +72,12 @@ h3.uno_title{
 }
 h3.un_o_title{
 	font-family: 'Passion One', cursive;
-	font-size: 36px;
+	font-size: 44px;
 	line-height: 48px;
+	font-weight: 400;
+	letter-spacing: 0.8px
 }
+h3{margin:0;}
 
 /*Category*/
 p.un_o_chapter{
@@ -103,7 +109,7 @@ h3.uno_category{
 /*Sentence*/
 h3.un_sentence{
 	font-family: 'Roboto', sans-serif;
-	font-weight: 400;
+	font-weight: 700;
 	font-size: 64px;
 	line-height: 64px;
 	letter-spacing: 0.8px;
@@ -113,6 +119,7 @@ h3.uno_sentence{
 	font-size: 64px;
 	line-height: 64px;
 	letter-spacing: 0.8px;
+	text-shadow: 2px 2px 4px #000000a0;
 }
 
 /*subject*/

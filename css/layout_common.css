@@ -2,6 +2,24 @@
 html, body{
 	width: 100%;
 	height: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+iframe{
+	z-index: -1;
+	position: fixed;
+	width:960px;
+	height:960px;
+	border-width: 0;
+	top: calc(50% - 480px);
+	left: calc(50% - 480px);
+}
+.bg_filter{
+	z-index: -2;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.6);
 }
 body{
 	margin:0;
@@ -11,8 +29,8 @@ body{
 }
 .live_area{
 	padding:48px;
-	width: calc(100% - 192px);
-	height: calc(100% - 192px);
+	width: calc(100% - 96px);
+	height: calc(100% - 48px);
 }
 
 /*Portion*/
@@ -65,11 +83,18 @@ body{
 	padding: 64px 0;
 }
 
+/*Category Containner*/
+.category_containner{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 /*Sentence Containner*/
 .sentence_containner{
+	z-index: 999;
 	display: flex;
 	width: calc(100% - 192px);
-	padding:96px;
+	padding:48px;
 }
 .sentence_containner>h3{
 	width: 100%;
